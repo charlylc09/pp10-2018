@@ -1,0 +1,87 @@
+<ion-grid class="grid-layout">
+    <ion-row class="row-layout">
+      <ion-col col-12 col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8>
+          <ion-header>
+            <ion-toolbar color='primary'>
+              <ion-buttons left>
+                <button ion-button menuToggle>
+                  <ion-icon name="menu"></ion-icon>
+                </button>
+              </ion-buttons>
+              <ion-searchbar placeholder="Búsqueda"></ion-searchbar>
+              <ion-buttons end>
+                <button ion-button class="hidden-sm hidden-md hidden-lg hidden-xl">
+                  <ion-icon name="paper" style="position:relative; font-size:2em;" color="white">
+                    <ion-badge style="position: absolute; font-weight: bold; top: -5px; left: 9px; font-size:9px;" color="danger">45</ion-badge>
+                  </ion-icon>
+                </button>
+                <button ion-button icon-only>
+                  <ion-icon name="more"></ion-icon>
+                </button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+
+          <ion-content>
+            <ion-row>
+              <ion-col *ngFor="let articulo of articulos" 
+                        class="col-articulo"
+                        no-border
+                        no-padding>
+                <ion-card class="card-articulo">
+                  <ion-card-content class="card-content-articulo">
+                    {{articulo.nombre}}
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-content>
+
+      </ion-col>
+
+      <ion-col col-4 class="hidden-xs">
+        <ion-header>
+          <ion-toolbar color="light">
+            tabs
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list>
+            <ion-item-sliding *ngFor="let item of items">
+              <ion-item>
+                <ion-label item-left text-wrap>
+                  <h3 class="item-nombre">{{ item.nombre }} <small class="item-cantidad"> x {{item.cantidad}}</small> </h3>
+                  <p>$ {{item.importe}}</p>
+                </ion-label>
+                <ion-label item-right text-right>$ {{ item.total }}</ion-label>
+              </ion-item>
+              <ion-item-options side="left">
+                <button ion-button icon-only color="danger">
+                    <ion-icon name="trash"></ion-icon>
+                </button>
+              </ion-item-options>
+              <ion-item-options side="right">
+                <button ion-button icon-only color="secondary">
+                    <ion-icon name="add"></ion-icon>
+                </button>
+                <button ion-button icon-only color="secondary">
+                    <ion-icon name="remove"></ion-icon>
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </ion-content>
+
+        <ion-footer>
+          <ion-toolbar class="item-footer">
+            <button ion-button full icon-end color="secondary" large class="item-footer">
+              Cobrar $ 150.20
+              <ion-icon name="checkmark-circle"></ion-icon>
+            </button>
+          </ion-toolbar>
+        </ion-footer>
+  
+    </ion-col>
+    
+  </ion-row>
+</ion-grid>

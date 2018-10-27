@@ -1,0 +1,68 @@
+page-ventas {
+
+    .grid-layout {
+        height: 100%;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        border: 0px;
+    }
+    
+    .row-layout {
+        height: 100%;
+    }
+    
+    .col-articulo {
+        max-width: 114px;
+        max-height: 94px;
+        border: 0px;
+        padding: 0px;
+    }
+    
+    .card-articulo {
+        height: 80px;
+        width: 100px;
+        margin: 7px;
+        background-color: gray;
+        color: white;
+    }
+    
+    .card-content-articulo {
+        padding: 6px;
+    }
+
+    .item-footer {
+        padding: 0px;
+        border: 0px;
+        margin: 0px;
+    }
+
+    .item-cantidad {
+        color: brown;
+        font-weight: normal;
+    }
+      
+    .item-nombre {
+        font-weight: bold;
+    }
+    
+    $breakpoints-keys: map-keys($screen-breakpoints);
+    $breakpoints-values: map-values($screen-breakpoints);
+    @for $i from 1 to length($breakpoints-keys)+1 {
+        @if $i < length($breakpoints-keys) {
+            .hidden-#{nth($breakpoints-keys, $i)} {
+                @media (min-width: nth($breakpoints-values, $i)) and (max-width: #{nth($breakpoints-values, $i+1)}) {
+                    display: none;
+                }
+            }
+        } @else {
+            .hidden-#{nth($breakpoints-keys, $i)} {
+                @media (min-width: nth($breakpoints-values, $i)) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
