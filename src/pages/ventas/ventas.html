@@ -42,18 +42,35 @@
       <ion-col col-4 class="hidden-xs">
         <ion-header>
           <ion-toolbar color="light">
-            tabs
+            <ion-title>
+              Consumidor Final 
+              <p class="subtitle">CUIT: 20-00000000-1</p>
+            </ion-title>
+            <ion-buttons right>
+              <button ion-button icon-only>
+                <ion-icon name="search"></ion-icon>
+              </button>
+              <button ion-button icon-only>
+                <ion-icon name="person-add"></ion-icon>
+              </button>
+            </ion-buttons>
+          </ion-toolbar>
+          <ion-toolbar no-padding>
+            <ion-title><ion-badge right color="danger">45 Artículos</ion-badge></ion-title>
+            <ion-buttons right>
+              <button ion-button icon-only>
+                <ion-icon name="trash"></ion-icon>
+              </button>
+            </ion-buttons>
           </ion-toolbar>
         </ion-header>
         <ion-content>
           <ion-list>
             <ion-item-sliding *ngFor="let item of items">
               <ion-item>
-                <ion-label item-left text-wrap>
-                  <h3 class="item-nombre">{{ item.nombre }} <small class="item-cantidad"> x {{item.cantidad}}</small> </h3>
-                  <p>$ {{item.importe}}</p>
-                </ion-label>
-                <ion-label item-right text-right>$ {{ item.total }}</ion-label>
+                <h3 class="item-nombre">{{ item.nombre }} <small class="item-cantidad"> x {{item.cantidad}}</small> </h3>
+                <p>$ {{item.importe|number:'1.2-2'}}</p>
+                <p item-right text-right>$ {{item.total|number:'1.2-2'}}</p>
               </ion-item>
               <ion-item-options side="left">
                 <button ion-button icon-only color="danger">

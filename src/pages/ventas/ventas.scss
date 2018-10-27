@@ -45,6 +45,13 @@ page-ventas {
     .item-nombre {
         font-weight: bold;
     }
+
+    .toolbar-title {
+        .subtitle {
+            font-size: 60%;
+            margin: 0;
+        }
+    }
     
     $breakpoints-keys: map-keys($screen-breakpoints);
     $breakpoints-values: map-values($screen-breakpoints);
