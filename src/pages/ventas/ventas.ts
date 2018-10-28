@@ -107,6 +107,8 @@ export class VentasPage {
     },
   ];
 
+  segmentosArticulos: string = "todos";
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

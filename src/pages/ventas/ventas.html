@@ -20,21 +20,46 @@
                 </button>
               </ion-buttons>
             </ion-toolbar>
+            <ion-toolbar color='primary'>
+              <ion-segment color="light" [(ngModel)]="segmentosArticulos">
+                <ion-segment-button value="todos">
+                  Todos
+                </ion-segment-button>
+                <ion-segment-button value="favoritos">
+                  Favoritos
+                </ion-segment-button>
+                <ion-segment-button value="promociones">
+                  Promociones
+                </ion-segment-button>
+              </ion-segment>
+            </ion-toolbar>
           </ion-header>
 
           <ion-content>
-            <ion-row>
-              <ion-col *ngFor="let articulo of articulos" 
-                        class="col-articulo"
-                        no-border
-                        no-padding>
-                <ion-card class="card-articulo">
-                  <ion-card-content class="card-content-articulo">
-                    {{articulo.nombre}}
-                  </ion-card-content>
-                </ion-card>
-              </ion-col>
-            </ion-row>
+            <div [ngSwitch]="segmentosArticulos">
+              <div *ngSwitchCase="'todos'">
+                <ion-row>
+                  <ion-col *ngFor="let articulo of articulos" 
+                            class="col-articulo"
+                            no-border
+                            no-padding>
+                    <ion-card class="card-articulo">
+                      <ion-card-content class="card-content-articulo">
+                        {{articulo.nombre}}
+                      </ion-card-content>
+                    </ion-card>
+                  </ion-col>
+                </ion-row>
+              </div>
+              <div *ngSwitchCase="'favoritos'">
+                  <p>No se encontraron resultados</p>
+                  <button ion-button color="light">Agregar Artículos Favoritos</button>
+              </div>
+              <div *ngSwitchCase="'promociones'">
+                  <p>No se encontraron resultados</p>
+                  <button ion-button color="light">Agregar Promociones</button>
+              </div>
+          </div>
           </ion-content>
 
       </ion-col>
