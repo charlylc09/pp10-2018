@@ -16,20 +16,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class VentasPage {
 
   public articulos = [
-    {nombre: 'Milanesa'},
-    {nombre: 'Bife'},
-    {nombre: 'Empanada'},
-    {nombre: 'Choripan'},
-    {nombre: 'Coca Cola'},
-    {nombre: 'Prity'},
-    {nombre: 'Pepsi'},
-    {nombre: 'Papas'},
-    {nombre: 'Milanesa'},
-    {nombre: 'Bife'},
-    {nombre: 'Empanada'},
-    {nombre: 'Choripan'},
-    {nombre: 'Coca Cola'},
-    {nombre: 'Yerba'}
+    {nombre: 'Milanesa', precio: 25.00, url: 'https://http2.mlstatic.com/milanesas-de-pollo-D_NQ_NP_979460-MLA27152434356_042018-F.jpg'},
+    {nombre: 'Bife', precio: 25.00, url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwSqvONBEvMWiKqOHFSItGtoG51WsyyLzKMl8D4Egeimj9C9si'},
+    {nombre: 'Empanada', precio: 25.00, url: 'http://www.recetasjudias.com/wp-content/uploads/2017/06/Burekas-Empanadas-de-Berenjenas-y-Queso.jpg'},
+    {nombre: 'Choripan', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Coca Cola', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Prity', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Pepsi', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Papas', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Milanesa', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Bife', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Empanada', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Choripan', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Coca Cola', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Yerba', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'}
   ];
 
   public items = [

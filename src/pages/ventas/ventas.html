@@ -9,14 +9,14 @@
                 </button>
               </ion-buttons>
               <ion-searchbar placeholder="Búsqueda"></ion-searchbar>
-              <ion-buttons end>
-                <button ion-button class="hidden-sm hidden-md hidden-lg hidden-xl">
+              <ion-buttons end class="hidden-sm hidden-md hidden-lg hidden-xl">
+                <button ion-button>
                   <ion-icon name="paper" style="position:relative; font-size:2em;" color="white">
                     <ion-badge style="position: absolute; font-weight: bold; top: -5px; left: 9px; font-size:9px;" color="danger">45</ion-badge>
                   </ion-icon>
                 </button>
                 <button ion-button icon-only>
-                  <ion-icon name="more"></ion-icon>
+                  <ion-icon name="people"></ion-icon>
                 </button>
               </ion-buttons>
             </ion-toolbar>
@@ -32,24 +32,42 @@
                   Promociones
                 </ion-segment-button>
               </ion-segment>
+              <ion-buttons end>
+                <button ion-button icon-only>
+                  <ion-icon name="more"></ion-icon>
+                </button>
+              </ion-buttons>
             </ion-toolbar>
           </ion-header>
 
           <ion-content>
             <div [ngSwitch]="segmentosArticulos">
               <div *ngSwitchCase="'todos'">
-                <ion-row>
+                <ion-row class="hidden-xs">
                   <ion-col *ngFor="let articulo of articulos" 
                             class="col-articulo"
                             no-border
                             no-padding>
                     <ion-card class="card-articulo">
+                      <img src="{{articulo.url}}" class="card-img"/>
                       <ion-card-content class="card-content-articulo">
-                        {{articulo.nombre}}
-                      </ion-card-content>
+                          {{articulo.nombre}}
+                        </ion-card-content>
                     </ion-card>
                   </ion-col>
                 </ion-row>
+
+                <ion-list class="hidden-sm hidden-md hidden-lg hidden-xl">
+                  <ion-item *ngFor="let articulo of articulos">
+                    <ion-avatar item-start>
+                      <img src="{{articulo.url}}">
+                    </ion-avatar>
+                    <h3>{{articulo.nombre}}</h3>
+                    <p>00000001</p>
+                    <p item-right text-right>$ {{articulo.precio|number:'1.2-2'}}</p>
+                  </ion-item>
+                </ion-list>
+
               </div>
               <div *ngSwitchCase="'favoritos'">
                   <p>No se encontraron resultados</p>
@@ -64,8 +82,8 @@
 
       </ion-col>
 
-      <ion-col col-4 class="hidden-xs">
-        <ion-header>
+      <ion-col col-4 class="hidden-xs shadow-left">
+        <ion-header class="shadow-left">
           <ion-toolbar color="light">
             <ion-title>
               Consumidor Final 
@@ -116,7 +134,7 @@
 
         <ion-footer>
           <ion-toolbar class="item-footer">
-            <button ion-button full icon-end color="secondary" large class="item-footer">
+            <button ion-button full icon-end color="secondary" large class="button-footer">
               Cobrar $ 150.20
               <ion-icon name="checkmark-circle"></ion-icon>
             </button>

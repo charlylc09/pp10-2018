@@ -28,13 +28,27 @@ page-ventas {
     }
     
     .card-content-articulo {
-        padding: 6px;
+        padding: 2px;
+        margin-top: -1px;
+    }
+
+    .card-img {
+        height: 60px;
+        width: 100px;
     }
 
     .item-footer {
         padding: 0px;
         border: 0px;
         margin: 0px;
+    }
+
+    .button-footer {
+        padding: 0px;
+        border: 0px;
+        margin: 0px;
+        float: none;
+        box-shadow: 0 0 0;
     }
 
     .item-cantidad {
@@ -51,6 +65,11 @@ page-ventas {
             font-size: 60%;
             margin: 0;
         }
+    }
+
+    .shadow-left {
+        float: left;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     }
     
     $breakpoints-keys: map-keys($screen-breakpoints);
