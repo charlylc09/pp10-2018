@@ -12,6 +12,8 @@ import { StockPage } from '../pages/stock/stock';
 import { ConfigPage } from '../pages/config/config';
 import { LoginPage } from '../pages/login/login';
 
+import { PopoverComponent } from '../components/popover/popover';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -25,7 +27,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CajasPage,
     StockPage,
     ConfigPage,
-    LoginPage
+    LoginPage,
+    PopoverComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     CajasPage,
     StockPage,
     ConfigPage,
-    LoginPage
+    LoginPage,
+    PopoverComponent
   ],
   providers: [
     StatusBar,

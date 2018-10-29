@@ -33,7 +33,7 @@
                 </ion-segment-button>
               </ion-segment>
               <ion-buttons end>
-                <button ion-button icon-only>
+                <button ion-button icon-only (click)="presentPopover($event)">
                   <ion-icon name="more"></ion-icon>
                 </button>
               </ion-buttons>
@@ -70,8 +70,8 @@
 
               </div>
               <div *ngSwitchCase="'favoritos'">
-                  <p>No se encontraron resultados</p>
-                  <button ion-button color="light">Agregar Artículos Favoritos</button>
+                <p>No se encontraron resultados</p>
+                <button ion-button color="light">Agregar Artículos Favoritos</button>
               </div>
               <div *ngSwitchCase="'promociones'">
                   <p>No se encontraron resultados</p>
