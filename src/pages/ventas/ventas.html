@@ -19,17 +19,22 @@
                   <ion-icon name="people"></ion-icon>
                 </button>
               </ion-buttons>
+              <ion-buttons end class="hidden-xs">
+                <button ion-button icon-only>
+                  <ion-icon name="barcode"></ion-icon>
+                </button>
+              </ion-buttons>
             </ion-toolbar>
             <ion-toolbar color='primary'>
               <ion-segment color="light" [(ngModel)]="segmentosArticulos">
                 <ion-segment-button value="todos">
-                  Todos
+                  Artículos
                 </ion-segment-button>
                 <ion-segment-button value="favoritos">
                   Favoritos
                 </ion-segment-button>
-                <ion-segment-button value="promociones">
-                  Promociones
+                <ion-segment-button value="importe">
+                  Importe
                 </ion-segment-button>
               </ion-segment>
               <ion-buttons end>
@@ -51,8 +56,9 @@
                     <ion-card class="card-articulo">
                       <img src="{{articulo.url}}" class="card-img"/>
                       <ion-card-content class="card-content-articulo">
-                          {{articulo.nombre}}
-                        </ion-card-content>
+                        {{articulo.nombre}}
+                        <p><small>$ {{articulo.precio|number:'1.2-2'}}</small></p>
+                      </ion-card-content>
                     </ion-card>
                   </ion-col>
                 </ion-row>
@@ -73,9 +79,41 @@
                 <p>No se encontraron resultados</p>
                 <button ion-button color="light">Agregar Artículos Favoritos</button>
               </div>
-              <div *ngSwitchCase="'promociones'">
-                  <p>No se encontraron resultados</p>
-                  <button ion-button color="light">Agregar Promociones</button>
+              <div *ngSwitchCase="'importe'">
+                  <div col-12>
+
+                      <div class="row" col-12>
+                          <ion-input type="text" col-10 value=""></ion-input>
+                          <button ion-button col-2 clear block only-icon large>
+                              <ion-icon name="backspace"></ion-icon>
+                          </button>
+                      </div>
+
+                      <div class="row">
+                          <button ion-button col-4 clear block large>7</button>
+                          <button ion-button col-4 clear block large>8</button>
+                          <button ion-button col-4 clear block large>9</button>
+                      </div>
+                
+                      <div class="row">
+                          <button ion-button col-4 clear block large>4</button>
+                          <button ion-button col-4 clear block large>5</button>
+                          <button ion-button col-4 clear block large>6</button>
+                      </div>
+                
+                      <div class="row">
+                          <button ion-button col-4 clear block large>1</button>
+                          <button ion-button col-4 clear block large>2</button>
+                          <button ion-button col-4 clear block large>3</button>
+                      </div>
+                
+                      <div class="row">
+                          <button ion-button col-4 clear block large>0</button>
+                          <button ion-button col-4 clear block large>.</button>
+                          <button ion-button col-4 clear block large>OK</button>
+                      </div>
+                
+                    </div>                
               </div>
           </div>
           </ion-content>

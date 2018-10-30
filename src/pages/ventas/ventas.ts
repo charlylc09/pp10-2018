@@ -22,7 +22,7 @@ export class VentasPage {
     {nombre: 'Empanada', precio: 25.00, url: 'http://www.recetasjudias.com/wp-content/uploads/2017/06/Burekas-Empanadas-de-Berenjenas-y-Queso.jpg'},
     {nombre: 'Choripan', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
     {nombre: 'Coca Cola', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
-    {nombre: 'Prity', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
+    {nombre: 'Pritty', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
     {nombre: 'Pepsi', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
     {nombre: 'Papas', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},
     {nombre: 'Milanesa', precio: 25.00, url: 'https://www.eternacadencia.com.ar/components/com_virtuemart/assets/images/vmgeneral/no-image.jpg'},

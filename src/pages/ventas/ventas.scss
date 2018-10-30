@@ -13,28 +13,34 @@ page-ventas {
     }
     
     .col-articulo {
-        max-width: 114px;
-        max-height: 94px;
+        max-width: 134px; //114
+        max-height: 124px; //94
         border: 0px;
         padding: 0px;
     }
     
     .card-articulo {
-        height: 80px;
-        width: 100px;
+        height: 110px; //80
+        width: 120px; //100
         margin: 7px;
-        background-color: gray;
-        color: white;
+        background-color: rgb(66, 66, 66); //gray
     }
     
     .card-content-articulo {
         padding: 2px;
         margin-top: -1px;
+        color: white;
+
+        p {
+            color: white;
+            margin-top: -2px;
+            margin-left: 2px;
+        }
     }
 
     .card-img {
-        height: 60px;
-        width: 100px;
+        height: 70px; //60
+        width: 120px; //100
     }
 
     .item-footer {
