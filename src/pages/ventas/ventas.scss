@@ -77,6 +77,44 @@ page-ventas {
         float: left;
         box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     }
+
+    .div-segments {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .div-calculadora {
+        height: 100%;
+        margin: 0px;
+    }
+
+    .grid-calculadora {
+        height: 100%;
+        padding: 0px;
+        margin: 0px;
+        border: 0px;
+        background-color: lightgray; 
+
+        ion-row {
+            height: 100%;
+            padding: 0px;
+
+            ion-col {
+                height: 100%;
+                padding: 0.5px;
+
+                button {
+                    margin: 0px;
+                    border-radius: 0px;
+                    height: 100%;
+                    font-size: 28px;
+                    color: rgb(48, 48, 48);
+                    background-color: grey;
+                }
+            }
+        }
+    }
     
     $breakpoints-keys: map-keys($screen-breakpoints);
     $breakpoints-values: map-values($screen-breakpoints);
