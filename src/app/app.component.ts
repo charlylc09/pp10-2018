@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SQLite } from '@ionic-native/sqlite';
 
 import { VentasPage } from '../pages/ventas/ventas';
 import { RecibosPage } from '../pages/recibos/recibos';
@@ -11,6 +12,8 @@ import { CajasPage } from '../pages/cajas/cajas';
 import { StockPage } from '../pages/stock/stock';
 import { ConfigPage } from '../pages/config/config';
 import { LoginPage } from '../pages/login/login';
+
+import { ArticulosProvider } from '../providers/articulos/articulos';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +25,12 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, 
+              public statusBar: StatusBar, 
+              public splashScreen: SplashScreen,
+              public sqlite: SQLite,
+              public articulosProvider: ArticulosProvider) {
+    
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -44,6 +52,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.createDatabase();
     });
   }
 
@@ -51,5 +60,23 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  private createDatabase(){
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default' // the location field is required
+    })
+    .then((db) => {
+      this.articulosProvider.setDatabase(db);
+      return this.articulosProvider.createTable();
+    })
+    .then(() =>{
+      this.splashScreen.hide();
+      this.rootPage = LoginPage;
+    })
+    .catch(error =>{
+      console.error(error);
+    });
   }
 }

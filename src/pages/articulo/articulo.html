@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title>Nuevo Articulo</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-end (click)="saveArticulo()">
+        Guardar
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Código</ion-label>
+      <ion-input type="number" [(ngModel)]="articulo.codigo" name="codigo"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label color="primary" stacked>Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="articulo.nombre" name="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Precio</ion-label>
+      <ion-input type="number" [(ngModel)]="articulo.precio" name="precio"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>SRC</ion-label>
+      <ion-textarea type="text" [(ngModel)]="articulo.src" name="src"></ion-textarea>
+    </ion-item>
+  
+  </ion-list>
+</ion-content>

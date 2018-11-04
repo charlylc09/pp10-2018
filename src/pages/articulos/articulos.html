@@ -8,5 +8,31 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-list>
+    <ion-item *ngIf="articulos.length == 0"> 
+      No se encuentran artículos cargados
+    </ion-item>
+    <ion-item-sliding *ngFor="let articulo of articulos; let i = index">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{articulo.src}}">
+        </ion-avatar>
+        <h3>{{articulo.nombre}}</h3>
+        <p>{{("00000000"+articulo.codigo).slice(-8)}}</p>
+        <p item-right text-right>$ {{articulo.precio|number:'1.2-2'}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button icon-only color="danger" (click)="deletArticulo(articulo, i)">
+            <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="addArticulo()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
 
 </ion-content>

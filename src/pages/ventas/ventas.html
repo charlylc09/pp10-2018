@@ -54,7 +54,7 @@
                             no-border
                             no-padding>
                     <ion-card class="card-articulo" (click)="agregarArticulo(articulo)">
-                      <img src="{{articulo.url}}" class="card-img"/>
+                      <img src="{{articulo.src}}" class="card-img"/>
                       <ion-card-content class="card-content-articulo">
                         {{articulo.nombre}}
                         <p><small>$ {{articulo.precio|number:'1.2-2'}}</small></p>
@@ -66,7 +66,7 @@
                 <ion-list class="hidden-sm hidden-md hidden-lg hidden-xl">
                   <ion-item *ngFor="let articulo of articulos">
                     <ion-avatar item-start>
-                      <img src="{{articulo.url}}">
+                      <img src="{{articulo.src}}">
                     </ion-avatar>
                     <h3>{{articulo.nombre}}</h3>
                     <p>00000001</p>
