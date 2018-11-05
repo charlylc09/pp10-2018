@@ -8,7 +8,7 @@
                   <ion-icon name="menu"></ion-icon>
                 </button>
               </ion-buttons>
-              <ion-searchbar placeholder="Búsqueda"></ion-searchbar>
+              <ion-searchbar placeholder="Búsqueda" (ionInput)="filtrarArticulos($event)"></ion-searchbar>
               <ion-buttons end class="hidden-sm hidden-md hidden-lg hidden-xl">
                 <button ion-button>
                   <ion-icon name="paper" style="position:relative; font-size:2em;" color="white">
@@ -54,9 +54,10 @@
                             no-border
                             no-padding>
                     <ion-card class="card-articulo" (click)="agregarArticulo(articulo)">
-                      <img src="{{articulo.src}}" class="card-img"/>
+                      <img *ngIf="articulo.src != null && articulo.src.trim() != ''" src="{{articulo.src}}" class="card-img"/>
+                      <img *ngIf="articulo.src == null || articulo.src.trim() == ''" src="../../../../assets/imgs/no_imagen.png" class="card-img"/>
                       <ion-card-content class="card-content-articulo">
-                        {{articulo.nombre}}
+                        {{articulo.nombre | slice:0:17}}
                         <p><small>$ {{articulo.precio|number:'1.2-2'}}</small></p>
                       </ion-card-content>
                     </ion-card>
@@ -66,7 +67,8 @@
                 <ion-list class="hidden-sm hidden-md hidden-lg hidden-xl">
                   <ion-item *ngFor="let articulo of articulos">
                     <ion-avatar item-start>
-                      <img src="{{articulo.src}}">
+                      <img *ngIf="articulo.src != null && articulo.src.trim() != ''" src="{{articulo.src}}" class="card-img"/>
+                      <img *ngIf="articulo.src == null || articulo.src.trim() == ''" src="../../../../assets/imgs/no_imagen.png" class="card-img"/>
                     </ion-avatar>
                     <h3>{{articulo.nombre}}</h3>
                     <p>00000001</p>

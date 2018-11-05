@@ -52,4 +52,8 @@ export class ArticulosPage {
     this.navCtrl.push(ArticuloPage);
   }
 
+  editArticulo(articulo: any){
+    this.navCtrl.push(ArticuloPage, {articulo: articulo});
+  }
+
 }

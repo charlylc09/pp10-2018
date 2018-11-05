@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar color='primary'>
-    <ion-title>Nuevo Articulo</ion-title>
+    <ion-title *ngIf="articulo.id == null">Nuevo Artículo</ion-title>
+    <ion-title *ngIf="articulo.id != null">Editar Artículo</ion-title>
     <ion-buttons end>
       <button ion-button icon-end (click)="saveArticulo()">
         Guardar

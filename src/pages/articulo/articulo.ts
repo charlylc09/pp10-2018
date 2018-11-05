@@ -10,6 +10,7 @@ import { ArticulosProvider } from '../../providers/articulos/articulos';
 export class ArticuloPage {
 
   articulo = {
+    id: null,
     codigo: "",
     nombre: "",
     precio: "",
@@ -19,16 +20,32 @@ export class ArticuloPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public articulosProvider: ArticulosProvider) {
+
+                if(this.navParams.get('articulo')!=null){
+                  this.articulo = this.navParams.get('articulo');
+                }
   }
 
   saveArticulo(){
-    this.articulosProvider.create(this.articulo)
-    .then(response => {
-      this.navCtrl.pop();
-    })
-    .catch( error => {
-      console.error( error );
-    })
+    if(this.articulo.id == null){
+      //CREATE
+      this.articulosProvider.create(this.articulo)
+      .then(response => {
+        this.navCtrl.pop();
+      })
+      .catch( error => {
+        console.error( error );
+      })
+    }else{
+      //UPDATE
+      this.articulosProvider.update(this.articulo)
+      .then(response => {
+        this.navCtrl.pop();
+      })
+      .catch( error => {
+        console.error( error );
+      })
+    }
   }
 
 }

@@ -13,14 +13,15 @@
       No se encuentran artículos cargados
     </ion-item>
     <ion-item-sliding *ngFor="let articulo of articulos; let i = index">
-      <ion-item>
+      <button ion-item (click)="editArticulo(articulo)">
         <ion-avatar item-start>
-          <img src="{{articulo.src}}">
+          <img *ngIf="articulo.src != null && articulo.src != ''" src="{{articulo.src}}" class="card-img"/>
+          <img *ngIf="articulo.src == null || articulo.src == ''" src="../../../../assets/imgs/no_imagen.png" class="card-img"/>
         </ion-avatar>
         <h3>{{articulo.nombre}}</h3>
         <p>{{("00000000"+articulo.codigo).slice(-8)}}</p>
         <p item-right text-right>$ {{articulo.precio|number:'1.2-2'}}</p>
-      </ion-item>
+      </button>
       <ion-item-options side="right">
         <button ion-button icon-only color="danger" (click)="deletArticulo(articulo, i)">
             <ion-icon name="trash"></ion-icon>
@@ -30,7 +31,7 @@
   </ion-list>
 
   <ion-fab bottom right>
-    <button ion-fab mini (click)="addArticulo()">
+    <button ion-fab mini color="secondary" (click)="addArticulo()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
