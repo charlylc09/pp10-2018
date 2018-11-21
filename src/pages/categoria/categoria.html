@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title *ngIf="categoria.id == null">Nueva Categoría</ion-title>
+    <ion-title *ngIf="categoria.id != null">Editar Categoría</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-end (click)="saveCategoria()">
+        Guardar
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Nombre Categoría</ion-label>
+      <ion-input type="text" [(ngModel)]="categoria.nombre" name="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>SRC</ion-label>
+      <ion-textarea type="text" [(ngModel)]="categoria.src" name="src"></ion-textarea>
+    </ion-item>
+  
+  </ion-list>
+</ion-content>

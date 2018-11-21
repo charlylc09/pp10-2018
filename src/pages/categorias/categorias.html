@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle *ngIf="!isSearchbarOpened">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="!isSearchbarOpened">Categorías</ion-title>
+    <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (ionInput)="filtrarCategorias($event)" (ionCancel)="isSearchbarOpened=false"></ion-searchbar>
+    <ion-buttons right>
+      <button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngIf="categorias.length == 0"> 
+      No se encuentran categorías
+    </ion-item>
+    <ion-item-sliding *ngFor="let categoria of categorias; let i = index">
+      <button ion-item (click)="editCategoria(categoria)">
+        <ion-avatar item-start>
+          <img *ngIf="categoria.src != null && categoria.src != ''" src="{{categoria.src}}" class="card-img"/>
+          <img *ngIf="categoria.src == null || categoria.src == ''" src="../../../../assets/imgs/no_imagen.png" class="card-img"/>
+        </ion-avatar>
+        <h3>{{categoria.nombre}}</h3>
+      </button>
+      <ion-item-options side="right">
+        <button ion-button icon-only color="danger" (click)="deletCategoria(categoria, i)">
+            <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab color="secondary" (click)="addCategoria()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

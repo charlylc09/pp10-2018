@@ -12,8 +12,12 @@ import { CajasPage } from '../pages/cajas/cajas';
 import { StockPage } from '../pages/stock/stock';
 import { ConfigPage } from '../pages/config/config';
 import { LoginPage } from '../pages/login/login';
+import { CategoriasPage } from '../pages/categorias/categorias';
 
 import { ArticulosProvider } from '../providers/articulos/articulos';
+import { CategoriasProvider } from '../providers/categorias/categorias';
+import { ComprobantesProvider } from '../providers/comprobantes/comprobantes';
+import { PuntodeventasProvider } from '../providers/puntodeventas/puntodeventas';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +33,10 @@ export class MyApp {
               public statusBar: StatusBar, 
               public splashScreen: SplashScreen,
               public sqlite: SQLite,
-              public articulosProvider: ArticulosProvider) {
+              public articulosProvider: ArticulosProvider,
+              public categoriasProvider: CategoriasProvider,
+              public comprobantesProvider: ComprobantesProvider,
+              public puntodeventasProvider: PuntodeventasProvider) {
     
     this.initializeApp();
 
@@ -38,6 +45,7 @@ export class MyApp {
       { title: 'Ventas', component: VentasPage, icon: 'cart' },
       { title: 'Recibos', component: RecibosPage, icon: 'cash' },
       { title: 'Artículos', component: ArticulosPage, icon: 'list' },
+      { title: 'Categorías', component: CategoriasPage, icon: 'list' },
       { title: 'Clientes', component: ClientesPage, icon: 'people' },
       { title: 'Caja', component: CajasPage, icon: 'calculator' },
       { title: 'Stock', component: StockPage, icon: 'cube' },
@@ -69,7 +77,13 @@ export class MyApp {
     })
     .then((db) => {
       this.articulosProvider.setDatabase(db);
-      return this.articulosProvider.createTable();
+      this.categoriasProvider.setDatabase(db);
+      this.comprobantesProvider.setDatabase(db);
+      this.puntodeventasProvider.setDatabase(db);
+      this.articulosProvider.createTable();
+      this.categoriasProvider.createTable();
+      this.comprobantesProvider.createTable();
+      this.puntodeventasProvider.createTable();
     })
     .then(() =>{
       this.splashScreen.hide();

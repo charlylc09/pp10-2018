@@ -11,7 +11,8 @@ import { ArticuloPage } from '../../pages/articulo/articulo';
 })
 export class ArticulosPage {
 
-  articulos: any[] = [];
+  public articulos: any[] = [];
+  public articulosAll: any[] = [];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -29,8 +30,18 @@ export class ArticulosPage {
   getAllArticulos(){
     this.articulosProvider.getAll()
     .then(articulos => {
-      console.log(articulos);
-      this.articulos = articulos;
+      this.articulosAll = articulos;
+      this.inicializarArticulos();
+    })
+    .catch( error => {
+      console.error( error );
+    });
+  }
+
+  refreshAllArticulos(){
+    this.articulosProvider.getAll()
+    .then(articulos => {
+      this.articulosAll = articulos;
     })
     .catch( error => {
       console.error( error );
@@ -40,8 +51,8 @@ export class ArticulosPage {
   deletArticulo(articulo: any, index){
     this.articulosProvider.delete(articulo)
     .then(response => {
-      console.log( response );
       this.articulos.splice(index, 1);
+      this.refreshAllArticulos();
     })
     .catch( error => {
       console.error( error );
@@ -54,6 +65,22 @@ export class ArticulosPage {
 
   editArticulo(articulo: any){
     this.navCtrl.push(ArticuloPage, {articulo: articulo});
+  }
+
+  inicializarArticulos(){
+    this.articulos = this.articulosAll;
+  }
+
+  filtrarArticulos(event: any){
+
+    this.inicializarArticulos();
+    const val = event.target.value;
+
+    if (val && val.trim() != '') {
+      this.articulos = this.articulos.filter((articulo) => {
+        return (articulo.nombre.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 
 }

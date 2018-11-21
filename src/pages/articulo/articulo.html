@@ -16,22 +16,55 @@
   <ion-list>
 
     <ion-item>
-      <ion-label color="primary" stacked>Código</ion-label>
+      <ion-label stacked>Código</ion-label>
       <ion-input type="number" [(ngModel)]="articulo.codigo" name="codigo"></ion-input>
     </ion-item>
   
     <ion-item>
-      <ion-label color="primary" stacked>Nombre</ion-label>
+      <ion-label stacked>Nombre</ion-label>
       <ion-input type="text" [(ngModel)]="articulo.nombre" name="nombre"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="primary" stacked>Precio</ion-label>
+      <ion-label stacked>Código de Barras</ion-label>
+      <ion-input type="text" [(ngModel)]="articulo.barcode" name="barcode"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Alícuota de IVA</ion-label>
+      <ion-select [(ngModel)]="articulo.alicIva" okText="Confirmar" cancelText="Cancelar">
+        <ion-option value="0">Exento (0%)</ion-option>
+        <ion-option value="10.5">Grabado Inferior (10,5%)</ion-option>
+        <ion-option value="21">Grabado General (21%)</ion-option>
+        <ion-option value="27">Grabado Superior (27%)</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Impuestos Internos</ion-label>
+      <ion-select [(ngModel)]="articulo.alicInt" okText="Confirmar" cancelText="Cancelar">
+        <ion-option value="0">Exento (0%)</ion-option>
+        <ion-option value="10">Alícuota 1 (10%)</ion-option>
+        <ion-option value="20">Alícuota 2 (20%)</ion-option>
+        <ion-option value="30">Alícuota 3 (30%)</ion-option>
+        <ion-option value="481.05">Alícuota 4 (481%)</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Precio</ion-label>
       <ion-input type="number" [(ngModel)]="articulo.precio" name="precio"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="primary" stacked>SRC</ion-label>
+      <ion-label stacked>Categoría</ion-label>
+      <ion-select [(ngModel)]="articulo.idCategoria" okText="Confirmar" cancelText="Cancelar">
+        <ion-option *ngFor="let categoria of categorias" [value]="categoria.id">{{categoria.nombre}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>SRC</ion-label>
       <ion-textarea type="text" [(ngModel)]="articulo.src" name="src"></ion-textarea>
     </ion-item>
   
