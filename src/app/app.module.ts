@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { SQLite } from '@ionic-native/sqlite';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { Camera } from '@ionic-native/camera';
 
 //Pages
 import { MyApp } from './app.component';
@@ -12,6 +13,7 @@ import { RecibosPage } from '../pages/recibos/recibos';
 import { ArticulosPage } from '../pages/articulos/articulos';
 import { ArticuloPage } from '../pages/articulo/articulo';
 import { ClientesPage } from '../pages/clientes/clientes';
+import { ClientePage } from '../pages/cliente/cliente';
 import { CajasPage } from '../pages/cajas/cajas';
 import { StockPage } from '../pages/stock/stock';
 import { ConfigPage } from '../pages/config/config';
@@ -24,7 +26,9 @@ import { LoginPage } from '../pages/login/login';
 import { ArticulosProvider } from '../providers/articulos/articulos';
 import { CategoriasProvider } from '../providers/categorias/categorias';
 import { ComprobantesProvider } from '../providers/comprobantes/comprobantes';
-import { PuntodeventasProvider } from '../providers/puntodeventas/puntodeventas';
+import { ItemsProvider } from '../providers/items/items';
+import { UsuariosProvider } from '../providers/usuarios/usuarios';
+import { ClientesProvider } from '../providers/clientes/clientes';
 
 //Components
 import { PopoverComponent } from '../components/popover/popover';
@@ -41,6 +45,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ArticulosPage,
     ArticuloPage,
     ClientesPage, 
+    ClientePage,
     CajasPage,
     StockPage,
     ConfigPage,
@@ -62,6 +67,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ArticulosPage,
     ArticuloPage,
     ClientesPage, 
+    ClientePage,
     CajasPage,
     StockPage,
     ConfigPage,
@@ -75,10 +81,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     SQLite,
     BarcodeScanner,
+    Camera,
     ArticulosProvider,
     CategoriasProvider,
     ComprobantesProvider,
-    PuntodeventasProvider,
+    ItemsProvider,
+    UsuariosProvider,
+    ClientesProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

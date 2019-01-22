@@ -13,6 +13,7 @@
 
 
 <ion-content padding>
+
   <ion-list>
 
     <ion-item>
@@ -67,6 +68,11 @@
       <ion-label stacked>SRC</ion-label>
       <ion-textarea type="text" [(ngModel)]="articulo.src" name="src"></ion-textarea>
     </ion-item>
-  
+
+    <button ion-button full (click)="getPicture()" color="secondary">Tomar Foto</button>
+
+    <img src="{{articulo.src}}"/>
+                      
   </ion-list>
+
 </ion-content>

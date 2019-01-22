@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { ArticulosProvider } from '../../providers/articulos/articulos';
 import { CategoriasProvider } from '../../providers/categorias/categorias';
 
@@ -24,6 +25,7 @@ export class ArticuloPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
+              private camera: Camera,
               public articulosProvider: ArticulosProvider,
               public categoriasProvider: CategoriasProvider) {
 
@@ -66,6 +68,23 @@ export class ArticuloPage {
         console.error( error );
       })
     }
+  }
+
+  getPicture(){
+    let options: CameraOptions = {
+      destinationType: this.camera.DestinationType.FILE_URI,
+      saveToPhotoAlbum: true,
+      targetWidth: 300,
+      targetHeight: 300,
+      quality: 50
+    }
+    this.camera.getPicture( options )
+    .then(imageData => {
+      this.articulo.src = imageData;
+    })
+    .catch(error =>{
+      console.error( error );
+    });
   }
 
 }

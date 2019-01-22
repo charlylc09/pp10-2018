@@ -17,7 +17,7 @@ export class ComprobantesProvider {
   }
 
   create(comprobante: any){
-    let sql = 'INSERT INTO comprobantes(numero,puntoDeVenta,codigo,fechaEmision,fechaComprobante,tipo,estado,idCliente,razonSocial,documento,tipoDoc,direccion,codPostal,provincia,impTotal,impGrav1,impGrav2,impGrav3,impExento,impNoGrav,impIva,impOtrosTrib,pagEfectivo,pagTarjeta) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+    let sql = 'INSERT INTO comprobantes(numero,puntoDeVenta,codigo,fechaEmision,fechaComprobante,tipo,estado,idCliente,razonSocial,documento,tipoDoc,direccion,codPostal,provincia,localidad,impTotal,impGrav1,impGrav2,impGrav3,impExento,impNoGrav,impIva,impOtrosTrib,pagEfectivo,pagTarjeta) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
     return this.db.executeSql(sql, [
       comprobante.numero,
       comprobante.puntoDeVenta,
@@ -33,6 +33,7 @@ export class ComprobantesProvider {
       comprobante.direccion,
       comprobante.codPostal,
       comprobante.provincia,
+      comprobante.localidad,
       comprobante.impTotal,
       comprobante.impGrav1,
       comprobante.impGrav2,
@@ -47,7 +48,7 @@ export class ComprobantesProvider {
   }
 
   createTable(){
-    let sql = 'CREATE TABLE IF NOT EXISTS comprobantes(id INTEGER PRIMARY KEY AUTOINCREMENT, numero INTEGER, puntoDeVenta INTEGER, codigo INTEGER, fechaEmision INTEGER, fechaComprobante INTEGER, tipo INTEGER, estado INTEGER, idCliente INTEGER, razonSocial TEXT, documento TEXT, tipoDoc INTEGER, direccion TEXT, codPostal INTEGER, provincia NUMERIC, impTotal NUMERIC, impGrav1 NUMERIC, impGrav2 NUMERIC, impGrav3 NUMERIC, impExento NUMERIC, impNoGrav NUMERIC, impIva NUMERIC, impOtrosTrib NUMERIC, pagEfectivo NUMERIC, pagTarjeta NUMERIC)';
+    let sql = 'CREATE TABLE IF NOT EXISTS comprobantes(id INTEGER PRIMARY KEY AUTOINCREMENT, numero INTEGER, puntoDeVenta INTEGER, codigo INTEGER, fechaEmision INTEGER, fechaComprobante INTEGER, tipo INTEGER, estado INTEGER, idCliente INTEGER, razonSocial TEXT, documento TEXT, tipoDoc INTEGER, direccion TEXT, codPostal INTEGER, provincia INTEGER, localidad TEXT, impTotal NUMERIC, impGrav1 NUMERIC, impGrav2 NUMERIC, impGrav3 NUMERIC, impExento NUMERIC, impNoGrav NUMERIC, impIva NUMERIC, impOtrosTrib NUMERIC, pagEfectivo NUMERIC, pagTarjeta NUMERIC)';
     return this.db.executeSql(sql, []);
   }
 
@@ -70,7 +71,7 @@ export class ComprobantesProvider {
   }
 
   update(comprobante: any){
-    let sql = 'UPDATE comprobantes SET numero=?, puntoDeVenta=?, codigo=?, fechaEmision=?, fechaComprobante= ?,tipo=?, estado=?, idCliente=?, razonSocial=?, documento=?, tipoDoc=?, direccion=?, codPostal=?, provincia=?, impTotal=?, impGrav1=?, impGrav2=?, impGrav3=?, impExento=?, impNoGrav=?, impIva=?, impOtrosTrib=?, pagEfectivo=?, pagTarjeta=? WHERE id=?';
+    let sql = 'UPDATE comprobantes SET numero=?, puntoDeVenta=?, codigo=?, fechaEmision=?, fechaComprobante= ?,tipo=?, estado=?, idCliente=?, razonSocial=?, documento=?, tipoDoc=?, direccion=?, codPostal=?, provincia=?, localidad=?, impTotal=?, impGrav1=?, impGrav2=?, impGrav3=?, impExento=?, impNoGrav=?, impIva=?, impOtrosTrib=?, pagEfectivo=?, pagTarjeta=? WHERE id=?';
     return this.db.executeSql(sql, [
       comprobante.numero,
       comprobante.puntoDeVenta,
@@ -86,6 +87,7 @@ export class ComprobantesProvider {
       comprobante.direccion,
       comprobante.codPostal,
       comprobante.provincia,
+      comprobante.localidad,
       comprobante.impTotal,
       comprobante.impGrav1,
       comprobante.impGrav2,

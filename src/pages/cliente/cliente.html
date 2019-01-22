@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title *ngIf="cliente.id == null">Nuevo Cliente</ion-title>
+    <ion-title *ngIf="cliente.id != null">Editar Cliente</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-end (click)="saveCliente()">
+        Guardar
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+  
+    <ion-item>
+      <ion-label stacked>Razón Social</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.razonSocial" name="razonSocial"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Categoría IVA</ion-label>
+      <ion-select [(ngModel)]="cliente.catIva" okText="Confirmar" cancelText="Cancelar">
+        <ion-option value="0">Monotributista</ion-option>
+        <ion-option value="1">Resp. Inscripto</ion-option>
+        <ion-option value="2">Consumidor Final</ion-option>
+        <ion-option value="3">Exento</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Documento</ion-label>
+      <ion-input type="number" [(ngModel)]="cliente.documento" name="documento"></ion-input>
+    </ion-item>
+           
+    <ion-item>
+      <ion-label stacked>Provincia</ion-label>
+      <ion-select [(ngModel)]="cliente.provincia" okText="Confirmar" cancelText="Cancelar">
+        <ion-option value="1">BUENOS AIRES</ion-option>
+        <ion-option value="2">CATAMARCA</ion-option>
+        <ion-option value="3">CORDOBA</ion-option>
+        <ion-option value="4">CORRIENTES</ion-option>
+        <ion-option value="5">ENTRE RIOS</ion-option>
+        <ion-option value="6">JUJUY</ion-option>
+        <ion-option value="7">MENDOZA</ion-option>
+        <ion-option value="8">LA RIOJA</ion-option>
+        <ion-option value="9">SALTA</ion-option>
+        <ion-option value="10">SAN JUAN</ion-option>
+        <ion-option value="11">SAN LUIS</ion-option>
+        <ion-option value="12">SANTA FE</ion-option>
+        <ion-option value="13">SANTIAGO DEL ESTERO</ion-option>
+        <ion-option value="14">TUCUMAN</ion-option>
+        <ion-option value="16">CHACO</ion-option>
+        <ion-option value="17">CHUBUT</ion-option>
+        <ion-option value="18">FORMOSA</ion-option>
+        <ion-option value="19">MISIONES</ion-option>
+        <ion-option value="20">NEUQUEN</ion-option>
+        <ion-option value="21">LA PAMPA</ion-option>
+        <ion-option value="22">RIO NEGRO</ion-option>
+        <ion-option value="23">SANTA CRUZ</ion-option>
+        <ion-option value="24">TIERRA DEL FUEGO</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Código Postal</ion-label>
+      <ion-input type="number" [(ngModel)]="cliente.codPostal" name="codPostal"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Dirección</ion-label>
+      <ion-input type="text" [(ngModel)]="cliente.direccion" name="direccion"></ion-input>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

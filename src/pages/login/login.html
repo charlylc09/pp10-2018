@@ -1,10 +1,26 @@
-<ion-header>
-  <ion-navbar color="primary">
-    <ion-title>Login</ion-title>
-  </ion-navbar>
-</ion-header>
-
-
-<ion-content padding>
-  <button ion-button full (click)="doLogin()" >Ingresar</button>
+<ion-content padding class="backgroud">
+  <h1>Punto de Ventas</h1>
+  <ion-card>
+    <ion-card-header>
+      LOGIN
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-lines>
+        <ion-item>
+          <ion-label><ion-icon name="person"></ion-icon></ion-label>
+          <ion-input type="text" [(ngModel)]="usuario.email" name="email" placeholder="Email"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div padding>
+        <button ion-button block (click)="doLogin()" icon-end>
+          Ingresar
+          <ion-icon name="open"></ion-icon>
+        </button>
+        <button ion-button block (click)="registrar()" color="secondary" icon-end>
+          Registrarse
+          <ion-icon name="clipboard"></ion-icon>
+        </button>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

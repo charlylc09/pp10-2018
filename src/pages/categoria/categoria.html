@@ -25,5 +25,9 @@
       <ion-textarea type="text" [(ngModel)]="categoria.src" name="src"></ion-textarea>
     </ion-item>
   
+    <button ion-button full (click)="getPicture()" color="secondary">Tomar Foto</button>
+
+    <img src="{{categoria.src}}"/>
+
   </ion-list>
 </ion-content>

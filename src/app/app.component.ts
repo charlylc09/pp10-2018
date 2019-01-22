@@ -17,7 +17,9 @@ import { CategoriasPage } from '../pages/categorias/categorias';
 import { ArticulosProvider } from '../providers/articulos/articulos';
 import { CategoriasProvider } from '../providers/categorias/categorias';
 import { ComprobantesProvider } from '../providers/comprobantes/comprobantes';
-import { PuntodeventasProvider } from '../providers/puntodeventas/puntodeventas';
+import { ItemsProvider } from '../providers/items/items';
+import { UsuariosProvider } from '../providers/usuarios/usuarios';
+import { ClientesProvider } from '../providers/clientes/clientes';
 
 @Component({
   templateUrl: 'app.html'
@@ -36,7 +38,9 @@ export class MyApp {
               public articulosProvider: ArticulosProvider,
               public categoriasProvider: CategoriasProvider,
               public comprobantesProvider: ComprobantesProvider,
-              public puntodeventasProvider: PuntodeventasProvider) {
+              public itemsProvider: ItemsProvider,
+              public usuariosProvider: UsuariosProvider,
+              public clientesProvider: ClientesProvider) {
     
     this.initializeApp();
 
@@ -79,11 +83,15 @@ export class MyApp {
       this.articulosProvider.setDatabase(db);
       this.categoriasProvider.setDatabase(db);
       this.comprobantesProvider.setDatabase(db);
-      this.puntodeventasProvider.setDatabase(db);
+      this.itemsProvider.setDatabase(db);
+      this.usuariosProvider.setDatabase(db);
+      this.clientesProvider.setDatabase(db);
       this.articulosProvider.createTable();
       this.categoriasProvider.createTable();
       this.comprobantesProvider.createTable();
-      this.puntodeventasProvider.createTable();
+      this.itemsProvider.createTable();
+      this.usuariosProvider.createTable();
+      this.clientesProvider.createTable();
     })
     .then(() =>{
       this.splashScreen.hide();

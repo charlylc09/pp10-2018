@@ -33,7 +33,7 @@ export class ArticulosProvider {
 
   update(articulo: any){
     let sql = 'UPDATE articulos SET codigo=?, nombre=?, precio=?, alicIva=?, alicInt=?, src=?, barcode=?, idCategoria=? WHERE id=?';
-    return this.db.executeSql(sql, [articulo.codigo, articulo.nombre, articulo.precio, articulo.alicIva, articulo.alicInt,, articulo.src, articulo.barcode, articulo.idCategoria, articulo.id]);
+    return this.db.executeSql(sql, [articulo.codigo, articulo.nombre, articulo.precio, articulo.alicIva, articulo.alicInt, articulo.src, articulo.barcode, articulo.idCategoria, articulo.id]);
   }
 
   getAll(){
