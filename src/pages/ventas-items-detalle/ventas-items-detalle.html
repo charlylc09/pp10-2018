@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title >Modificar Artículo</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-end (click)="saveItem()">
+        Guardar
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label stacked>Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="item.nombre" name="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Cantidad</ion-label>
+      <ion-input type="number" [(ngModel)]="item.cantidad" name="cantidad" (ionChange)='onInputChange($event)'></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Precio</ion-label>
+      <ion-input type="number" [(ngModel)]="item.importe" name="precio" (ionChange)='onInputChange($event)'></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Alícuota de IVA</ion-label>
+      <ion-select [(ngModel)]="item.alicIva" okText="Confirmar" cancelText="Cancelar">
+        <ion-option value="0">Exento (0%)</ion-option>
+        <ion-option value="10.5">Grabado Inferior (10,5%)</ion-option>
+        <ion-option value="21">Grabado General (21%)</ion-option>
+        <ion-option value="27">Grabado Superior (27%)</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Impuestos Internos</ion-label>
+      <ion-select [(ngModel)]="item.alicInt" okText="Confirmar" cancelText="Cancelar">
+        <ion-option value="0">Exento (0%)</ion-option>
+        <ion-option value="10">Alícuota 1 (10%)</ion-option>
+        <ion-option value="20">Alícuota 2 (20%)</ion-option>
+        <ion-option value="30">Alícuota 3 (30%)</ion-option>
+        <ion-option value="481.05">Alícuota 4 (481%)</ion-option>
+      </ion-select>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Total</ion-label>
+      <ion-input type="number" [(ngModel)]="item.total" name="total" disabled></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

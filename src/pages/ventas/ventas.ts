@@ -3,7 +3,11 @@ import { IonicPage, NavController, NavParams, PopoverController, Content } from 
 import { PopoverComponent } from '../../components/popover/popover';
 import { ArticulosProvider } from '../../providers/articulos/articulos';
 import { UsuariosProvider } from '../../providers/usuarios/usuarios';
+import { VentasPagosPage } from '../../pages/ventas-pagos/ventas-pagos';
+import { VentasItemsPage } from '../../pages/ventas-items/ventas-items';
+import { VentasItemsDetallePage } from '../../pages/ventas-items-detalle/ventas-items-detalle';
 import { ComprobantesProvider } from '../../providers/comprobantes/comprobantes';
+import { ItemsProvider } from '../../providers/items/items';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { AlertController } from 'ionic-angular';
 
@@ -15,8 +19,6 @@ import { AlertController } from 'ionic-angular';
 })
 export class VentasPage {
 
-  public comprobante: any;
-  public items: any[] = [];
   public articulos: any[] = [];
   public articulosAll: any[] = [];
   
@@ -35,6 +37,7 @@ export class VentasPage {
               public popoverCtrl: PopoverController,
               public articulosProvider: ArticulosProvider,
               public comprobantesProvider: ComprobantesProvider,
+              public itemsProvider: ItemsProvider,
               public usuariosProvider: UsuariosProvider) {
 
                 this.getAllArticulos();
@@ -50,6 +53,10 @@ export class VentasPage {
     this.getAllArticulos();
   }
 
+  ionViewWillEnter() {
+    this.calcularTotales();
+  }
+
   presentPopover(myEvent) {
     let popover = this.popoverCtrl.create(PopoverComponent);
     popover.present({
@@ -58,7 +65,7 @@ export class VentasPage {
   }
 
   inicializarComprobante(){
-    this.comprobante = {
+    this.comprobantesProvider.comprobante = {
       numero: this.usuariosProvider.usuario.ultNroComp + 1,
       puntoDeVenta: this.usuariosProvider.usuario.puntoVta,
       codigo: 6, //Factura B
@@ -86,7 +93,7 @@ export class VentasPage {
       pagTarjeta: 0
     };
 
-    this.items = [];
+    this.itemsProvider.items = [];
   }
 
   getAllArticulos(){
@@ -103,18 +110,19 @@ export class VentasPage {
   agregarArticulo(articulo) {
 
     let existe = false;
-    for(let i=0; i<this.items.length; i++){
+    for(let i=0; i<this.itemsProvider.items.length; i++){
 
-      if(this.items[i].idArticulo == articulo.id){
-        this.items[i].cantidad = parseFloat(this.items[i].cantidad) + 1;
-        this.items[i].total = parseFloat(this.items[i].cantidad) * parseFloat(this.items[i].importe);
+      if(this.itemsProvider.items[i].idArticulo == articulo.id){
+        this.itemsProvider.items[i].cantidad = parseFloat(this.itemsProvider.items[i].cantidad) + 1;
+        this.itemsProvider.items[i].total = parseFloat(this.itemsProvider.items[i].cantidad) * parseFloat(this.itemsProvider.items[i].importe);
         existe = true;
       }
     }
 
     if(!existe){
 
-      this.items.unshift({
+      this.itemsProvider.items.unshift({
+          idComprobante: null,
           idArticulo: articulo.id,
           nombre: articulo.nombre,
           cantidad: 1,
@@ -145,68 +153,24 @@ export class VentasPage {
   }
 
   calcularTotales(){
-
-    let tmpTotal: number = 0;
-    let tmpGrav1: number = 0;
-    let tmpGrav2: number = 0;
-    let tmpGrav3: number = 0;
-    let tmpExento: number = 0;
-    let tmpNoGrav: number = 0;
-    let tmpIva: number = 0;
-    let tmpOtrosTrib: number = 0;
-    let tmpNeto: number = 0;
-    let tmpCantArt: number = 0;
-
-    for(let i=0; i<this.items.length; i++){
-      tmpTotal += this.items[i].total;
-      tmpCantArt += this.items[i].cantidad;
-
-      if(this.items[i].alicIva == 0){//Exento
-        tmpExento += this.items[i].total;
-      }else{
-        tmpNeto = (this.items[i].total/(((this.items[i].alicIva + this.items[i].alicint)/100)+1));
-        tmpIva += (tmpNeto * (this.items[i].alicIva/100));
-        tmpOtrosTrib += (tmpNeto * (this.items[i].alicInt/100));
-        if(this.items[i].alicIva == 10.5){
-          tmpGrav1 += tmpNeto;
-        }
-        if(this.items[i].alicIva == 21){
-          tmpGrav2 += tmpNeto;
-        }
-        if(this.items[i].alicIva == 27){
-          tmpGrav3 += tmpNeto;
-        }
-      }
-
-    }
-
-    this.comprobante.total = tmpTotal;
-    this.comprobante.impGrav1 = tmpGrav1;
-    this.comprobante.impGrav2 = tmpGrav2;
-    this.comprobante.impGrav3 = tmpGrav3;
-    this.comprobante.impExento = tmpExento;
-    this.comprobante.impNoGrav = tmpNoGrav;
-    this.comprobante.impIva = tmpIva;
-    this.comprobante.impOtrosTrib = tmpOtrosTrib;
-
-    this.cantArticulos = tmpCantArt;
+    this.cantArticulos = this.comprobantesProvider.calcularTotales();
   }
 
   deletItem(index){
-    this.items.splice(index, 1);
+    this.itemsProvider.items.splice(index, 1);
     this.calcularTotales();
   }
 
   incrementItem(index){
-    this.items[index].cantidad = parseFloat(this.items[index].cantidad) + 1;
-    this.items[index].total = parseFloat(this.items[index].cantidad) * parseFloat(this.items[index].importe);
+    this.itemsProvider.items[index].cantidad = parseFloat(this.itemsProvider.items[index].cantidad) + 1;
+    this.itemsProvider.items[index].total = parseFloat(this.itemsProvider.items[index].cantidad) * parseFloat(this.itemsProvider.items[index].importe);
     this.calcularTotales();
   }
 
   decrementItem(index){
-    if(parseFloat(this.items[index].cantidad)>1){
-      this.items[index].cantidad = parseFloat(this.items[index].cantidad) - 1;
-      this.items[index].total = parseFloat(this.items[index].cantidad) * parseFloat(this.items[index].importe);
+    if(parseFloat(this.itemsProvider.items[index].cantidad)>1){
+      this.itemsProvider.items[index].cantidad = parseFloat(this.itemsProvider.items[index].cantidad) - 1;
+      this.itemsProvider.items[index].total = parseFloat(this.itemsProvider.items[index].cantidad) * parseFloat(this.itemsProvider.items[index].importe);
       this.calcularTotales();
     }
   }
@@ -232,7 +196,7 @@ export class VentasPage {
         {
           text: 'Despejar',
           handler: () => {
-            this.items = [];
+            this.itemsProvider.items = [];
             this.calcularTotales();
           }
         }
@@ -258,7 +222,8 @@ export class VentasPage {
   }
 
   onActionCalcOKButton(){
-    this.items.unshift({
+    this.itemsProvider.items.unshift({
+        idComprobante: null,
         idArticulo: null,
         nombre: "Varios",
         cantidad: 1,
@@ -273,11 +238,19 @@ export class VentasPage {
   }
 
   onActionCobrar(){
-    
+    this.navCtrl.push(VentasPagosPage);
   }
 
   onResize(){
     this.contentItems.resize();
+  }
+
+  onActionItemDetalle(index){
+    this.navCtrl.push(VentasItemsDetallePage, {index: index});
+  }
+
+  onActionItems(){
+    this.navCtrl.push(VentasItemsPage);
   }
 
 }

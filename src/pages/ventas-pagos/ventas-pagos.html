@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title >Cobrar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <button ion-button full icon-end color="secondary" large class="button-footer" (click)="onActionCobrar()">
+    Cobrar $ {{comprobantesProvider.comprobante.total|number:'1.2-2'}}
+    <ion-icon name="checkmark-circle"></ion-icon>
+  </button>
+</ion-content>

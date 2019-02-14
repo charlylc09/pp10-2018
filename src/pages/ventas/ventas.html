@@ -17,7 +17,7 @@
                 </ion-segment-button>
               </ion-segment>
               <ion-buttons end class="hidden-sm hidden-md hidden-lg hidden-xl">
-                <button ion-button>
+                <button ion-button (click)="onActionItems()">
                   <ion-icon name="paper" style="position:relative; font-size:2em;" color="white">
                     <ion-badge style="position: absolute; font-weight: bold; top: -5px; left: 9px; font-size:9px;" color="danger">{{cantArticulos}}</ion-badge>
                   </ion-icon>
@@ -81,7 +81,7 @@
 
                   <ion-row>
                     <ion-col col-8 text-right padding>
-                      <h1>$ {{calculatorValue|number:'1.2-2'}}</h1>
+                      <h1 class="text-calculadora">$ {{calculatorValue|number:'1.2-2'}}</h1>
                     </ion-col>
                     <ion-col col-4>
                         <button ion-button clear block only-icon large (click)="onActionCalcDelete()">
@@ -141,8 +141,8 @@
         </ion-header>
         <ion-content #contentItems (window:resize)="onResize()">
           <ion-list>
-            <ion-item-sliding *ngFor="let item of items; let i = index">
-              <button ion-item>
+            <ion-item-sliding *ngFor="let item of itemsProvider.items; let i = index">
+              <button ion-item (click)="onActionItemDetalle(i)">
                 <h3 class="item-nombre">{{item.nombre}}</h3>
                 <p>{{item.cantidad}} x $ {{item.importe|number:'1.2-2'}}</p>
                 <p item-right text-right>$ {{item.total|number:'1.2-2'}}</p>
@@ -166,8 +166,8 @@
 
         <ion-footer>
           <ion-toolbar class="item-footer">
-            <button ion-button full icon-end color="secondary" large class="button-footer" (cclick)="onActionCobrar()">
-              Cobrar $ {{comprobante.total|number:'1.2-2'}}
+            <button ion-button full icon-end color="secondary" large class="button-footer" (click)="onActionCobrar()">
+              Cobrar $ {{comprobantesProvider.comprobante.total|number:'1.2-2'}}
               <ion-icon name="checkmark-circle"></ion-icon>
             </button>
           </ion-toolbar>

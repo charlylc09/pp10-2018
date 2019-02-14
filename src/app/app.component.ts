@@ -18,6 +18,7 @@ import { ArticulosProvider } from '../providers/articulos/articulos';
 import { CategoriasProvider } from '../providers/categorias/categorias';
 import { ComprobantesProvider } from '../providers/comprobantes/comprobantes';
 import { ItemsProvider } from '../providers/items/items';
+import { PagosProvider } from '../providers/pagos/pagos';
 import { UsuariosProvider } from '../providers/usuarios/usuarios';
 import { ClientesProvider } from '../providers/clientes/clientes';
 
@@ -39,6 +40,7 @@ export class MyApp {
               public categoriasProvider: CategoriasProvider,
               public comprobantesProvider: ComprobantesProvider,
               public itemsProvider: ItemsProvider,
+              public pagosProvider: PagosProvider,
               public usuariosProvider: UsuariosProvider,
               public clientesProvider: ClientesProvider) {
     
@@ -84,12 +86,14 @@ export class MyApp {
       this.categoriasProvider.setDatabase(db);
       this.comprobantesProvider.setDatabase(db);
       this.itemsProvider.setDatabase(db);
+      this.pagosProvider.setDatabase(db);
       this.usuariosProvider.setDatabase(db);
       this.clientesProvider.setDatabase(db);
       this.articulosProvider.createTable();
       this.categoriasProvider.createTable();
       this.comprobantesProvider.createTable();
       this.itemsProvider.createTable();
+      this.pagosProvider.createTable();
       this.usuariosProvider.createTable();
       this.clientesProvider.createTable();
     })

@@ -9,6 +9,9 @@ import { Camera } from '@ionic-native/camera';
 //Pages
 import { MyApp } from './app.component';
 import { VentasPage } from '../pages/ventas/ventas';
+import { VentasPagosPage } from '../pages/ventas-pagos/ventas-pagos';
+import { VentasItemsPage } from '../pages/ventas-items/ventas-items';
+import { VentasItemsDetallePage } from '../pages/ventas-items-detalle/ventas-items-detalle';
 import { RecibosPage } from '../pages/recibos/recibos';
 import { ArticulosPage } from '../pages/articulos/articulos';
 import { ArticuloPage } from '../pages/articulo/articulo';
@@ -35,12 +38,16 @@ import { PopoverComponent } from '../components/popover/popover';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { PagosProvider } from '../providers/pagos/pagos';
 
 
 @NgModule({
   declarations: [
     MyApp,
     VentasPage, 
+    VentasPagosPage, 
+    VentasItemsPage,
+    VentasItemsDetallePage,
     RecibosPage,
     ArticulosPage,
     ArticuloPage,
@@ -63,6 +70,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     VentasPage, 
+    VentasPagosPage,
+    VentasItemsPage,
+    VentasItemsDetallePage, 
     RecibosPage,
     ArticulosPage,
     ArticuloPage,
@@ -88,7 +98,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ItemsProvider,
     UsuariosProvider,
     ClientesProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PagosProvider
   ]
 })
 export class AppModule {}

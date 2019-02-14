@@ -7,7 +7,7 @@ import { SQLiteObject } from '@ionic-native/sqlite';
 export class ItemsProvider {
 
   db: SQLiteObject = null;
-  public item: any;
+  public items: any[] = [];
 
   constructor(public http: HttpClient) {}
 
@@ -18,12 +18,12 @@ export class ItemsProvider {
   }
 
   create(item: any){
-    let sql = 'INSERT INTO items(idArticulo, nombre, cantidad, importe, alicIva, alicInt, total) VALUES(?,?,?,?,?,?,?)';
-    return this.db.executeSql(sql, [item.idArticulo, item.nombre, item.cantidad, item.importe, item.alicIva, item.alicInt, item.total]);
+    let sql = 'INSERT INTO items(idComprobante, idArticulo, nombre, cantidad, importe, alicIva, alicInt, total) VALUES(?,?,?,?,?,?,?)';
+    return this.db.executeSql(sql, [item.idComprobante, item.idArticulo, item.nombre, item.cantidad, item.importe, item.alicIva, item.alicInt, item.total]);
   }
 
   createTable(){
-    let sql = 'CREATE TABLE IF NOT EXISTS items(id INTEGER PRIMARY KEY AUTOINCREMENT, idArticulo INTEGER, nombre TEXT, cantidad NUMERIC, importe NUMERIC, alicIva NUMERIC, alicInt NUMERIC, total NUMERIC)';
+    let sql = 'CREATE TABLE IF NOT EXISTS items(id INTEGER PRIMARY KEY AUTOINCREMENT, idComprobante INTEGER, idArticulo INTEGER, nombre TEXT, cantidad NUMERIC, importe NUMERIC, alicIva NUMERIC, alicInt NUMERIC, total NUMERIC)';
     return this.db.executeSql(sql, []);
   }
 
@@ -46,8 +46,8 @@ export class ItemsProvider {
   }
 
   update(item: any){
-    let sql = 'UPDATE items SET idArticulo=?, nombre=?, cantidad=?, importe=?, alicIva=?, alicInt=?, total=? WHERE id=?';
-    return this.db.executeSql(sql, [item.idArticulo, item.nombre, item.cantidad, item.importe, item.alicIva, item.alicInt, item.total, item.id]);
+    let sql = 'UPDATE items SET idComprobante=?, idArticulo=?, nombre=?, cantidad=?, importe=?, alicIva=?, alicInt=?, total=? WHERE id=?';
+    return this.db.executeSql(sql, [item.idComprobante, item.idArticulo, item.nombre, item.cantidad, item.importe, item.alicIva, item.alicInt, item.total, item.id]);
   }
 
 }
