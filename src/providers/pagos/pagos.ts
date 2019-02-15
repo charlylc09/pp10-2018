@@ -7,6 +7,7 @@ import { SQLiteObject } from '@ionic-native/sqlite';
 export class PagosProvider {
 
   db: SQLiteObject = null;
+  public pagos: any[] = [];
 
   constructor(public http: HttpClient) {}
 

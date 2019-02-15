@@ -66,6 +66,7 @@ export class VentasPage {
 
   inicializarComprobante(){
     this.comprobantesProvider.comprobante = {
+      idComprobante: null,
       numero: this.usuariosProvider.usuario.ultNroComp + 1,
       puntoDeVenta: this.usuariosProvider.usuario.puntoVta,
       codigo: 6, //Factura B

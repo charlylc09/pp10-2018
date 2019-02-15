@@ -10,4 +10,26 @@
     Cobrar $ {{comprobantesProvider.comprobante.total|number:'1.2-2'}}
     <ion-icon name="checkmark-circle"></ion-icon>
   </button>
+
+  <ion-grid padding margin>
+    <ion-row *ngFor="let pago of pagosProvider.pagos; let i = index">
+      <ion-col>
+        <ion-item>
+          <ion-select [(ngModel)]="pago.tipoPago" okText="Confirmar" cancelText="Cancelar">
+            <ion-option value="0">Efectivo</ion-option>
+            <ion-option value="1">Tarjeta</ion-option>
+            <ion-option value="2">Cheque</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-input [(ngModel)]="pago.importe" type="number" (ionBlur)='autocompletarImportes(i)'></ion-input>
+          <button ion-button item-right (click)="onActionEliminar(i)" *ngIf='pagosProvider.pagos.length > 1'>Eliminar</button>
+          <button ion-button item-right (click)="onActionDividir(i)">Dividir</button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
