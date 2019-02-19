@@ -1,8 +1,9 @@
 <ion-header>
   <ion-navbar color='primary'>
-      <ion-title>Detalle: {{cantArticulos}} Artículos</ion-title>
+      <ion-title>Ticket</ion-title>
       <ion-buttons right>
-        <button ion-button icon-only (click)="deleteAllItems()">
+        <button ion-button icon-end (click)="deleteAllItems()" color="danger">
+            {{cantArticulos}} Artículos
           <ion-icon name="trash"></ion-icon>
         </button>
       </ion-buttons>

@@ -11,9 +11,9 @@
     <ion-icon name="checkmark-circle"></ion-icon>
   </button>
 
-  <ion-grid padding margin>
+  <ion-grid padding>
     <ion-row *ngFor="let pago of pagosProvider.pagos; let i = index">
-      <ion-col>
+      <ion-col padding>
         <ion-item>
           <ion-select [(ngModel)]="pago.tipoPago" okText="Confirmar" cancelText="Cancelar">
             <ion-option value="0">Efectivo</ion-option>
@@ -22,10 +22,13 @@
           </ion-select>
         </ion-item>
       </ion-col>
-      <ion-col>
+      <ion-col padding>
         <ion-item>
+          <ion-icon item-start name="cash" *ngIf='pago.tipoPago == 0'></ion-icon>
+          <ion-icon item-start name="card" *ngIf='pago.tipoPago == 1'></ion-icon>
+          <ion-icon item-start name="document" *ngIf='pago.tipoPago == 2'></ion-icon>
           <ion-input [(ngModel)]="pago.importe" type="number" (ionBlur)='autocompletarImportes(i)'></ion-input>
-          <button ion-button item-right (click)="onActionEliminar(i)" *ngIf='pagosProvider.pagos.length > 1'>Eliminar</button>
+          <button ion-button item-right (click)="onActionEliminar(i)" *ngIf='pagosProvider.pagos.length > 1' color="danger">Eliminar</button>
           <button ion-button item-right (click)="onActionDividir(i)">Dividir</button>
         </ion-item>
       </ion-col>

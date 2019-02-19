@@ -131,9 +131,10 @@
       <ion-col col-4 class="hidden-xs shadow-left">
         <ion-header class="shadow-left">
           <ion-toolbar color="light">
-            <ion-title><ion-badge right color="danger">{{cantArticulos}} Artículos</ion-badge></ion-title>
+            <ion-title>Ticket</ion-title>
             <ion-buttons right>
-              <button ion-button icon-only (click)="deleteAllItems()">
+              <button ion-button icon-end (click)="deleteAllItems()" color="danger">
+                  {{cantArticulos}} Artículos
                 <ion-icon name="trash"></ion-icon>
               </button>
             </ion-buttons>
